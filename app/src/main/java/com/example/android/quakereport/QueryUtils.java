@@ -46,7 +46,6 @@ public final class QueryUtils {
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
-
             // Create a JSONObject from the SAMPLE_JSON_RESPONSE string
             JSONObject baseJsonResponse = new JSONObject(SAMPLE_JSON_RESPONSE);
 
@@ -65,7 +64,10 @@ public final class QueryUtils {
                 // Extract the value for the key called "time"
                 long time = properties.getLong("time");
 
-                Earthquake earthquake = new Earthquake(magnitude, location, time);
+                // Extract the value for the key called "url"
+                String url = properties.getString("url");
+
+                Earthquake earthquake = new Earthquake(magnitude, location, time, url);
                 earthquakes.add(earthquake);
             }
 
